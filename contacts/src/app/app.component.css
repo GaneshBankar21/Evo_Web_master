@@ -1,0 +1,15 @@
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+.tab-label{
+    font-size: 20px;
+    font-family: fangsong;
+    font-weight: bold;
+    color: black;
+}

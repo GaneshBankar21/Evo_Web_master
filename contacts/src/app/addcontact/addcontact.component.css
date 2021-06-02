@@ -1,0 +1,16 @@
+.inline{
+    display: inline;
+}
+
+.padding-right{
+    padding: 10px;
+}
+
+.centreFlex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.warning{
+    color: red;
+}

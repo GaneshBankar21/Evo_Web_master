@@ -1,0 +1,31 @@
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">{{title}}</h2>
+  <div>
+    <nav mat-tab-nav-bar mat-align-tabs="left">
+      <a mat-tab-link class="tab-label"
+         *ngFor="let l of navigation"
+         [routerLink]="l.link"
+         [active]="this.router.url === l.link">
+        {{l.name}}
+      </a>
+    </nav>
+  <!-- <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    
+    <ul class="navbar-nav flex">
+      <li class="nav-item">
+          <a routerLink="employees" class="nav-link" routerLinkActive="active">Contact List</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="add" class="nav-link" routerLinkActive="active">Add Contact</a>
+      </li>
+    </ul>
+  </nav> -->
+</div>
+  <hr>  
+  <div class="card">
+    <div class="card-body">
+  <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

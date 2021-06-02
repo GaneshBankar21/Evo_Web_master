@@ -1,0 +1,65 @@
+<div>
+    <h4>{{note}}</h4>
+  </div>
+<table mat-table [dataSource]="rowData" class="mat-elevation-z8">
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td  mat-cell *matCellDef="let contactList">  <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.id"></td>
+    </ng-container>
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let contactList"> <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.firstName"> </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let contactList"> <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.lastName"> </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let contactList">  <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.email"> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Telephone </th>
+        <td mat-cell *matCellDef="let contactList">  <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.phoneNumber"> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let contactList">  <input  class= "tr-width"[type]="text" matInput [(ngModel)]="contactList.status"> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> 
+<br>
+<div class="row centreFlex">
+    <div class="margin5">
+    <button class="btn btn-success" [disabled] = "!(this.selection.selected.length===1)" (click)="onEdit()">Edit Contact</button>
+</div>
+<div  class="margin5">
+    <button class="btn btn-success" [disabled] = "!(this.selection.selected.length===1)" (click)="onDelete()">Delete Contact</button>
+</div>
+</div>
+
+<div class="warning spaceAroundFlex">
+    <h4>*Select Only 1 Row to Edit Contact</h4>
+  </div>
+
+  
